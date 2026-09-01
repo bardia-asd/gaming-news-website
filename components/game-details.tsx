@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, CalendarDays, Check, Heart, Monitor, Play, Shield, Star, Users } from 'lucide-react'
 import { articles } from '@/data/articles'
-import { getRelatedArticles, type Game } from '@/data/games'
+import { relatedArticleIds, type Game } from '@/data/games'
 import { ArticleCard } from '@/components/home-sections'
 import { useState } from 'react'
 
@@ -18,7 +18,8 @@ function ScoreBadge({ score }: { score?: string }) {
 
 export function GameDetailsPage({ game }: { game: Game }) {
   const [wishlisted, setWishlisted] = useState(false)
-  const related = articles.filter((article) => getRelatedArticles(game.id).includes(article.id))
+  const relatedIds = relatedArticleIds[game.id] ?? []
+  const related = articles.filter((article) => relatedIds.includes(article.id))
   const art = game.coverArt ?? game.image
   const gallery = game.screenshots ?? [game.image]
 

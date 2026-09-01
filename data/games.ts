@@ -45,8 +45,12 @@ export const reviews = [
 ]
 
 export const allGames = [...upcomingGames, ...popularGames]
-export function getGame(id: string) { return allGames.find((game) => game.id === id) }
-export function getRelatedArticles(gameId: string) {
-  const matches: Record<string, string[]> = { u1: ['1','4','6'], p1: ['1','5','7'] }
-  return matches[gameId] ?? []
+
+export const relatedArticleIds: Record<string, string[]> = {
+  u1: ['1', '4', '6'],
+  p1: ['1', '5', '7'],
+}
+
+export function getGame(id: string) {
+  return allGames.find((game) => game.id === id)
 }
