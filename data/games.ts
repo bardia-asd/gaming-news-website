@@ -1,12 +1,36 @@
-export type Game = { id: string; title: string; image: string; platforms: string[]; release: string; genre: string; days?: string; rating?: string }
+export type Game = {
+  id: string
+  title: string
+  image: string
+  coverArt?: string
+  screenshots?: string[]
+  platforms: string[]
+  release: string
+  releaseDate?: string
+  genre: string
+  genres?: string[]
+  days?: string
+  rating?: string
+  developer?: string
+  publisher?: string
+  description?: string
+}
+
+const neonScreens = [
+  'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=85',
+  'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1000&q=85',
+  'https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=1000&q=85',
+]
+
 export const upcomingGames: Game[] = [
- { id:'u1', title:'Neon Protocol', image:'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=700&q=85', platforms:['PC','PS5'], release:'Sep 18, 2026', genre:'Action RPG', days:'17 DAYS' },
+ { id:'u1', title:'Neon Protocol', image:'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=700&q=85', coverArt:'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=1200&q=85', screenshots: neonScreens, platforms:['PC','PS5'], release:'Sep 18, 2026', releaseDate:'September 18, 2026', genre:'Action RPG', genres:['Action RPG','Cyberpunk','Open World'], days:'17 DAYS', developer:'Signal Arc', publisher:'Northstar Interactive', description:'Neon Protocol is a kinetic action RPG about memory, identity, and the price of rewriting a city that refuses to forget. As a courier with a stolen neural key, you will move through rain-soaked districts where every alliance changes the streets around you.\n\nCombat is fast, expressive, and built around reading the city as much as reading your enemies. Chain movement, hacked environments, and impossible choices into a journey that keeps asking who gets to own the future.' },
  { id:'u2', title:'Hollow Crown', image:'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=85', platforms:['PC','XBX'], release:'Oct 02, 2026', genre:'Dark Fantasy' },
  { id:'u3', title:'Driftline', image:'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=85', platforms:['PS5','XBX'], release:'Oct 21, 2026', genre:'Racing' },
  { id:'u4', title:'Starfall Tactics', image:'https://images.unsplash.com/photo-1446776877081-d282a0f896e2?auto=format&fit=crop&w=700&q=85', platforms:['PC','SW'], release:'Nov 06, 2026', genre:'Strategy' },
 ]
+
 export const popularGames: Game[] = [
- {id:'p1',title:'The Last Signal',image:'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=700&q=85',platforms:['PC','PS5'],release:'Out now',genre:'Survival',rating:'9.1'},
+ {id:'p1',title:'The Last Signal',image:'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=700&q=85',coverArt:'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1400&q=85',platforms:['PC','PS5'],release:'Out now',releaseDate:'June 12, 2026',genre:'Survival',genres:['Survival','Sci-Fi'],rating:'9.1',developer:'Lowlight Studio',publisher:'Northstar Interactive',description:'A lonely signal cuts through the static of a planet that should be empty. The Last Signal turns survival into a study of attention, patience, and the stories we invent when no one answers.'},
  {id:'p2',title:'Mythos: Reborn',image:'https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=700&q=85',platforms:['PC','XBX'],release:'Out now',genre:'RPG',rating:'8.7'},
  {id:'p3',title:'Rift Runners',image:'https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=700&q=85',platforms:['PC','SW'],release:'Out now',genre:'Co-op',rating:'8.4'},
  {id:'p4',title:'Emberwake',image:'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=700&q=85',platforms:['PS5'],release:'Out now',genre:'Adventure',rating:'8.2'},
@@ -19,3 +43,10 @@ export const reviews = [
  {id:'r2',title:'The Last Signal',image:popularGames[0].image,score:8.6,verdict:'Tension, transformed into a language.',reviewer:'Jon Bell'},
  {id:'r3',title:'Pocket Kingdoms',image:'https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=700&q=85',score:6.8,verdict:'A charming idea that needs a little more room.',reviewer:'Lena Ortiz'},
 ]
+
+export const allGames = [...upcomingGames, ...popularGames]
+export function getGame(id: string) { return allGames.find((game) => game.id === id) }
+export function getRelatedArticles(gameId: string) {
+  const matches: Record<string, string[]> = { u1: ['1','4','6'], p1: ['1','5','7'] }
+  return matches[gameId] ?? []
+}
