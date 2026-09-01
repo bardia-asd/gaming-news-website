@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { ArrowLeft, Check, Copy, Link2, Send, Share2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import type { Article, ArticleBlock } from '@/data/articles'
-import { ArticleCard } from '@/components/home-sections'
+import { ArticleCard, GameCard } from '@/components/home-sections'
+import { allGames } from '@/data/games'
 
 export function ReadingProgress() {
   const [progress, setProgress] = useState(0)

@@ -5,7 +5,7 @@ export type ArticleBlock =
   | { type: 'image'; src: string; alt: string; caption: string }
   | { type: 'list'; items: string[] }
 
-export type Article = { id: string; category: string; title: string; excerpt: string; image: string; author: string; date: string; time: string; href: string; content?: ArticleBlock[] }
+export type Article = { id: string; category: string; title: string; excerpt: string; image: string; author: string; date: string; time: string; href: string; content?: ArticleBlock[]; relatedGameIds?: string[] }
 
 const articleContent = {
   '1': [
@@ -22,7 +22,7 @@ const articleContent = {
 }
 
 export const articles: Article[] = [
-  { id: '1', category: 'FEATURED', title: 'The next generation of games is already here', excerpt: 'From impossible worlds to stories that remember you, these are the releases changing how we play.', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=85', author: 'Maya Chen', date: 'Sep 01, 2026', time: '3h ago', href: '/article/1', content: articleContent['1'] },
+  { id: '1', category: 'FEATURED', title: 'The next generation of games is already here', excerpt: 'From impossible worlds to stories that remember you, these are the releases changing how we play.', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=85', author: 'Maya Chen', date: 'Sep 01, 2026', time: '3h ago', href: '/article/1', content: articleContent['1'], relatedGameIds: ['u1', 'u2'] },
   { id: '2', category: 'RPG', title: 'Eclipse of Asteria makes every choice feel permanent', excerpt: 'A gorgeous space opera with consequences that land.', image: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&w=900&q=80', author: 'Jon Bell', date: 'Sep 01, 2026', time: '5h ago', href: '/article/2' },
   { id: '3', category: 'HARDWARE', title: 'The quiet revolution in handheld gaming', excerpt: 'Why the best screen in your house might fit in a backpack.', image: 'https://images.unsplash.com/photo-1605901309584-818e25960a8f?auto=format&fit=crop&w=900&q=80', author: 'Lena Ortiz', date: 'Aug 31, 2026', time: '1d ago', href: '/article/3' },
   { id: '4', category: 'INDIE', title: 'Small teams, enormous ideas', excerpt: 'Meet the creators building the weirdest games of the year.', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80', author: 'Ravi Shah', date: 'Aug 31, 2026', time: '1d ago', href: '/article/4' },
