@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, CalendarDays, Check, Heart, Monitor, Play, Shield, Star, Users } from 'lucide-react'
 import { articles } from '@/data/articles'
-import { relatedArticleIds, type Game } from '@/data/games'
+import { relatedArticleIds, type Game } from '@/data/games' // Use the static relationship map to avoid stale helper exports
 import { ArticleCard } from '@/components/home-sections'
 import { useState } from 'react'
 
